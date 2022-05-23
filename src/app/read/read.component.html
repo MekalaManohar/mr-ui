@@ -1,0 +1,30 @@
+<div class="container">
+
+    <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>{{successMessage}}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Author</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = 'let post of posts' >
+            <th scope="row">{{post.id}}</th>
+            <td>{{post.title}}</td>
+            <td>{{post.description}}</td>
+            <td>{{post.author}}</td>
+            <td><a [routerLink]="['/create',post.id]" class="btn btn-sm btn-success">Update</a></td>
+            <td><button class="btn btn-sm btn-danger" (click)="deletePostById(post.id)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
